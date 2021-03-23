@@ -1,0 +1,61 @@
+
+ #game {
+     background-color: white;
+ }
+
+.choice-container {
+    display:flex;
+    margin-bottom: 0.5rem;
+    width: 100%;
+    font-size: 1.8rem;
+    border: 0.1rem solid rgb(red, green, blue);
+    background-color: rosybrown;
+
+}
+.choice-prefix {
+    padding: 1.5rem 2.5rem; 
+    background-color: slateblue;
+    color: wheat;
+    height: 10px;
+    width: 5px;
+    display: flex;
+    justify-content: right;
+    align-content: flex-end;
+    margin-right: 0px;
+    
+
+    
+}
+.choice-text {
+    padding: 1.5r 2.5rem;
+    display: flex;
+    justify-content:center;
+    align-content: center;
+    background-color:white;
+    margin-left: 0px;
+    width: 100%;
+   
+    
+   
+
+}
+.choice-container:hover {
+    cursor: pointer;
+    box-shadow: 0 0.4rem 1.4rem 0 rgba(red, green, blue, alpha);
+    transform: translateY(-0.1rem);
+    transition: cubic-bezier(1, 0, 0, 1);
+    
+}
+h2 {
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.correct {
+    background-color: green;
+}
+.incorrect {
+    background-color: red;
+}
