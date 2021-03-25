@@ -60,6 +60,10 @@ p {
  .initial-text {
      margin-left: 500px;
      justify-content: flex-end;
-     
-
+ }
+ /* HUd */
+ #hud {
+     display: inline;
+    justify-content: center;
+    align-content: center;
  }

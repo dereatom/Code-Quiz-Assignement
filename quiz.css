@@ -59,3 +59,49 @@ h2 {
 .incorrect {
     background-color: red;
 }
+#Score-form {
+    display: none;
+}
+#score-list {
+    justify-content: center;
+    align-content: center;
+    margin-left: 560px;
+} 
+.high-scores {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+/* Hud section */
+#hud {
+    display: flex;
+    justify-content: center;
+    align-content: center; 
+}
+.hud-prefix {
+    text-align: center;
+    margin-right: 0px;
+    margin-top: 40px;
+    
+    
+}
+.hud-main-text {
+    text-align: center;
+
+}
+#progressBar {
+    width: 20rem;
+    height: 2rem;
+    border: 0.3rem solid cornflowerblue;
+ 
+    
+}
+#progressBarFull {
+    height: 2.1rem ;
+    background-color: dodgerblue;
+    width: 0%;
+
+}
+#progressText.hud-prefix{
+    margin-top: 10px;
+}

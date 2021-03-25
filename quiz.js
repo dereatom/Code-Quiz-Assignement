@@ -1,7 +1,9 @@
 const question = document.getElementById("question");
 const choice = Array.from(document.getElementsByClassName("choice-text"));
 setTimeout(function(){ question.value = "1 seconds" }, 1000);
-
+const progressText =document.getElementById("progressText")
+const scoreText =document.getElementById("score")
+const progressBarFull= document.getElementById("progressBarFull")
 let currentQuestion = {};
 let acceptingAnswers = false;
 let score = 0;
@@ -31,11 +33,11 @@ let questions = [
     choice2: "HTML",
     choice3: "C++C#",
     choice4: "All",
-    Answer: 4
+    answer: 4
 }
 ]
-const CORRECT_BONUS =10;
-const MAX_QUESTION = 3;
+const CORRECT_BONUS =20;
+const MAX_QUESTIONS = 3;
 startGame = () => {
     questionCounter= 0;
     score = 0;
@@ -45,9 +47,16 @@ startGame = () => {
 
 };
 getNewQuestion = () => {
-    if(availableQuestion.length ===0 || questionCounter >= MAX_QUESTION)
-    return window.location.assign("/Users/derej/workspaces/bootcamp/Homework/Code-Quiz-Assingment/Code-Quiz-Assignement/highscores.html")
+    if(availableQuestion.length === 0 || questionCounter >= MAX_QUESTIONS) {
+        localStorage.setItem('currentScore', score)
+        return window.location.assign("\highscores.html")
+
+    }
     questionCounter++; 
+    
+    //update the progress bar
+    progressBarFull.style.width= `${(questionCounter/MAX_QUESTIONS) * 100}%`;
+
    const questionIndex = Math.floor(Math.random() * availableQuestion.length);
    currentQuestion= availableQuestion[questionIndex];
    question.innerText = currentQuestion.question;
@@ -70,6 +79,9 @@ choice.forEach(choice =>{
         const selectedAnsewer = selectedChoice.dataset["number"];
         
        const classToApply = selectedAnsewer == currentQuestion.answer ? "correct": "incorrect";
+       if (classToApply ==="correct") {
+           incrementScore(CORRECT_BONUS)
+       }
        
         selectedChoice.parentElement.classList.add(classToApply);
         setTimeout( () => {
@@ -81,21 +93,8 @@ choice.forEach(choice =>{
         
     });
 });
+incrementScore =num => {
+    score += num;
+    scoreText.innerText = score;
+};
 startGame();
-var secondsLeft = 30;
-
-function setTime() {
-  // Sets interval in variable
-  var timerInterval = setInterval(function() {
-    secondsLeft--;
-    timeEl.textContent = secondsLeft + "final score";
-
-    if(secondsLeft === 0) {
-      // Stops execution of action at set interval
-      clearInterval(timerInterval);
-      // Calls function to create and append image
-      sendMessage();
-    }
-
-  }, 1000);
-}
